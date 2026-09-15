@@ -15,10 +15,13 @@
       --bg-card: #220c32;          /* darker, more pronounced purple for day cards */
       --bg-superset: #190925;      /* subtle grouping in same deep purple scheme */
       --border: #3b2b5c;           /* purple border for card */
+      --border-soft: #2a1d43;
       --text-main: #ffd6e0;        /* very light pink text */
       --text-muted: #b39fc2;       /* muted color fitting purple scheme */
       --accent: #ff85a2;           /* accent color in same vibe */
-
+      --accent-purple: #9b6cff;
+  
+      
       --radius: 14px;
       --sets-width: 30px; /* fixed width for sets */
       --reps-width: 40px; /* fixed width for reps */
@@ -32,7 +35,13 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg-page);
+      background: 
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(155, 108, 255, 0.15),
+          transparent 95%      
+        ),
+        var(--bg-page);
       color: var(--text-main);
       line-height: 1.5;
       padding: 16px;
@@ -63,10 +72,16 @@
        ============================= */
 
     .day-card {
-      background: var(--bg-card);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(155, 108, 255, 0.07),
+          transparent 45%
+        ),
+        var(--bg-card);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -76,17 +91,24 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+      padding: 8px 12px;
+      border-left: 1px solid var(--accent-purple);
+      border-top: 1px solid var(--accent-purple);
+      padding-left: 10px;
+      border-radius: 6px 64px 0px 0px;
     }
 
     .day-title {
       font-size: 1.4rem;
       font-weight: 800;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.02rem;
     }
 
     .day-subtitle {
       font-size: 0.9rem;
+      letter-spacing: 0.04rem;
       color: var(--text-muted);
+      text-transform: uppercase;
     }
 
     /* =============================
@@ -107,12 +129,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0;
+      padding: 4px 7px;
+      border-bottom: 1px solid var(--border-soft);
     }
 
     .exercise-left {
       display: flex;
       flex-direction: column;
+      margin-left: 8px;
     }
 
     .exercise-name {
@@ -139,18 +163,21 @@
       display: inline-block;
       width: var(--sets-width);
       text-align: right;
+      color: var(--accent-purple);
     }
 
     .exercise-x {
       display: inline-block;
       width: 14px;
       text-align: center;
+      color: var(--accent-purple);
     }
 
     .exercise-reps {
       display: inline-block;
       width: var(--reps-width);
       text-align: left;
+      color: var(--accent-purple);
     }
 
     /* =============================
@@ -165,6 +192,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      box-shadow: inset 0 0 18px rgba(255, 133, 162, 0.08);
     }
 
     .superset .exercise {
@@ -172,11 +200,11 @@
     }
 
     .superset .exercise-left {
-      margin-left: 10px; /* keeps names indented without moving numbers */
+      margin-left: 4px; /* keeps names indented without moving numbers */
     }
 
     .superset .exercise-right {
-      margin-right: 4px; /* keeps names indented without moving numbers */
+      margin-right: 12px; /* keeps names indented without moving numbers */
     }
 
 
@@ -186,6 +214,10 @@
 
     .muted {
       color: var(--text-muted);
+    }
+  
+    .exercise:last-child {
+      border-bottom: none;
     }
 
   </style>
@@ -332,7 +364,7 @@
     <div class="superset">
     <div class="exercise">
       <div class="exercise-left">
-        <div class="exercise-name">Bicep curl</div>
+        <div class="exercise-name">Bicep Curl</div>
 
       </div>
       <div class="exercise-right">
@@ -431,12 +463,12 @@
     <div class="exercise">
       <div class="exercise-left">
         <div class="exercise-name">Sled</div>
-<div class="exercise-notes">minutes</div>
+        
       </div>
       <div class="exercise-right">
-        <span class="exercise-sets">1</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">5</span>
+        <span class="exercise-sets">5</span>
+        <span class="exercise-x">min</span>
+        <span class="exercise-reps"></span>
       </div>
     </div>
   </div>
