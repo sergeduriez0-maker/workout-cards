@@ -11,15 +11,24 @@
        ============================= */
 
     :root {
-      --bg-page: #08010c;          /* almost black with a hint of purple */
-      --bg-card: #220c32;          /* darker, more pronounced purple for day cards */
-      --bg-superset: #190925;      /* subtle grouping in same deep purple scheme */
-      --border: #3b2b5c;           /* purple border for card */
-      --border-soft: #2a1d43;
-      --text-main: #ffd6e0;        /* very light pink text */
-      --text-muted: #b39fc2;       /* muted color fitting purple scheme */
-      --accent: #ff85a2;           /* accent color in same vibe */
-      --accent-purple: #9b6cff;
+      --bg-page: #0a0405;          
+      --bg-card: #1d070b;  
+      --bg-card-var: #220810;
+      --bg-card-ter: #4a121b;
+      --card-sun: #B0464847;
+      --moon-core: 190, 208, 242;
+      --moon: 176, 70, 72;
+      --card-flame: #D6461E33;
+      --bg-superset: #1a0609;     
+      --border: #6b1a22;        
+      --border-soft: #D68C9630;
+      --border-var: #d4af37;
+      --text-main: #ffe3c4;       
+      --text-muted: #b8908a;
+      --text-title: #f2533a;
+      --text-shadow: #F2533A59;
+      --accent: #b0391f;          
+      --accent-var: #ffb02e;
   
       
       --radius: 14px;
@@ -35,13 +44,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: 
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(155, 108, 255, 0.15),
-          transparent 95%      
-        ),
-        var(--bg-page);
+      background: var(--bg-page);
       color: var(--text-main);
       line-height: 1.5;
       padding: 16px;
@@ -72,7 +75,14 @@
        ============================= */
 
     .day-card {
-      background: var(--bg-card);
+      background:
+	radial-gradient(circle 210px at 72% -30px,
+      		rgba(var(--moon-core), 0.34) 0%,
+  		rgba(var(--moon), 0.20) 24%,
+  		rgba(var(--moon), 0.09) 52%,
+  		transparent 100%),
+  	radial-gradient(120% 55% at 50% 118%, var(--card-flame) 0%, transparent 70%),
+	linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-var) 60%, var(--bg-card-ter) 100%);
       border-radius: var(--radius);
       border: 1px solid var(--border);
       padding: 14px;
@@ -86,8 +96,8 @@
       flex-direction: column;
       gap: 4px;
       padding: 8px 12px;
-      border-left: 1px solid var(--accent-purple);
-      border-top: 1px solid var(--accent-purple);
+      border-left: 1px solid var(--border-var);
+      border-top: 1px solid var(--border-var);
       padding-left: 10px;
       border-radius: 6px 64px 0px 0px;
     }
@@ -96,6 +106,8 @@
       font-size: 1.4rem;
       font-weight: 800;
       letter-spacing: 0.02rem;
+      color: var(--text-title);
+      text-shadow: 0 0 14px var(--text-shadow);
     }
 
     .day-subtitle {
@@ -157,21 +169,21 @@
       display: inline-block;
       width: var(--sets-width);
       text-align: right;
-      color: var(--accent-purple);
+      color: var(--accent-var);
     }
 
     .exercise-x {
       display: inline-block;
       width: 14px;
       text-align: center;
-      color: var(--accent-purple);
+      color: var(--accent-var);
     }
 
     .exercise-reps {
       display: inline-block;
       width: var(--reps-width);
       text-align: left;
-      color: var(--accent-purple);
+      color: var(--accent-var);
     }
 
     /* =============================
@@ -179,14 +191,13 @@
        ============================= */
 
     .superset {
-      background: var(--bg-superset);
       border-radius: 10px;
       border-left: 3px solid var(--accent);
+      border-right: 3px solid var(--accent);
       padding: 8px 8px; /* reduced right offset */
       display: flex;
       flex-direction: column;
       gap: 6px;
-      box-shadow: inset 0 0 18px rgba(255, 133, 162, 0.08);
     }
 
     .superset .exercise {
@@ -213,239 +224,20 @@
     .exercise:last-child {
       border-bottom: none;
     }
-
   </style>
 </head>
 <body>
 
   <main class="workout">
-
 <section class="day-card">
   <header class="day-header">
-    <div class="day-title">Sunday</div>
-    <div class="day-subtitle">Full Body</div>
+    <div class="day-title">Upper</div>
+    <div class="day-subtitle">Tuesday</div>
   </header>
   <div class="exercise-list">
     <div class="exercise">
       <div class="exercise-left">
-        <div class="exercise-name">Pendulum</div>
-<div class="exercise-notes">To failure</div>
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">4</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">5</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Landmine 180</div>
-<div class="exercise-notes">Explode up, control down</div>
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">11</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Landmine Press</div>
-<div class="exercise-notes">One arm, kneeling</div>
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">11</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Unilat Lat Pd</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">11</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Turkish Get-Up</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">2</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">5</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Sled</div>
-        
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">5</span>
-        <span class="exercise-x">min</span>
-        <span class="exercise-reps"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="day-card">
-  <header class="day-header">
-    <div class="day-title">Tuesday</div>
-    <div class="day-subtitle">Upper</div>
-  </header>
-  <div class="exercise-list">
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Bench Press</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">4</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">5</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Weighted Pull-Ups</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">4</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">5</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Military Press</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">11</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Row</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">11</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Face Pulls</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">2</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Lateral Raises</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">2</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
-      </div>
-    </div>
-    <div class="superset">
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Bicep Curl</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">2</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Skullcrusher</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">2</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
-      </div>
-    </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Club Swing</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">2</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="day-card">
-  <header class="day-header">
-    <div class="day-title">Wednesday</div>
-    <div class="day-subtitle">Lower</div>
-  </header>
-  <div class="exercise-list">
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Deadlift</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">4</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">5</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Zercher Squat</div>
-<div class="exercise-notes">Technique over volume</div>
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">11</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Lunges</div>
-
-      </div>
-      <div class="exercise-right">
-        <span class="exercise-sets">3</span>
-        <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
-      </div>
-    </div>
-    <div class="exercise">
-      <div class="exercise-left">
-        <div class="exercise-name">Nordic Curls</div>
+        <div class="exercise-name">Military press</div>
 
       </div>
       <div class="exercise-right">
@@ -456,13 +248,286 @@
     </div>
     <div class="exercise">
       <div class="exercise-left">
-        <div class="exercise-name">Shovel Deadlift</div>
+        <div class="exercise-name">Weighted pull-ups</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Bench press</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">4</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Machine row</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">10</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">DB bent-over raise</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">4</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    <div class="superset">
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">EZ curl</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">5</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Skull crushers</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">5</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="day-card">
+  <header class="day-header">
+    <div class="day-title">Lower</div>
+    <div class="day-subtitle">Wednesday</div>
+  </header>
+  <div class="exercise-list">
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Pendulum squat</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">4</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Hip thrust</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">4</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Seated leg curl</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">10</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">45° back extension</div>
 
       </div>
       <div class="exercise-right">
         <span class="exercise-sets">2</span>
         <span class="exercise-x">x</span>
-        <span class="exercise-reps">14</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="day-card">
+  <header class="day-header">
+    <div class="day-title">Posterior</div>
+    <div class="day-subtitle">Saturday</div>
+  </header>
+  <div class="exercise-list">
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Deadlift</div>
+<div class="exercise-notes">3 min rest, RPE 8, no grinders</div>
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">5</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Machine row</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">10</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Lying face pulls</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">RDL</div>
+<div class="exercise-notes">stop 2 reps short of failure</div>
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">DB lateral raise</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">5</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="day-card">
+  <header class="day-header">
+    <div class="day-title">Anterior</div>
+    <div class="day-subtitle">Sunday</div>
+  </header>
+  <div class="exercise-list">
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Hack squat</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Incline barbell press</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">4</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Dips</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">8</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Leg extension</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">10</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">DB lateral raise</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    <div class="superset">
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Cable curl</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">5</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Overhead cable extension</div>
+
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">5</span>
+        <span class="exercise-x">x</span>
+        <span class="exercise-reps">12</span>
+      </div>
+    </div>
+    </div>
+    <div class="exercise">
+      <div class="exercise-left">
+        <div class="exercise-name">Dragon flags</div>
+<div class="exercise-notes">stop when form breaks</div>
+      </div>
+      <div class="exercise-right">
+        <span class="exercise-sets">3</span>
+        <span class="exercise-x"></span>
+        <span class="exercise-reps"></span>
       </div>
     </div>
   </div>
@@ -473,4 +538,3 @@
 
 </body>
 </html>
-
